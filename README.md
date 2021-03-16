@@ -11,4 +11,4 @@
 - Diana Nóia
 - Bruno Alves
 - Hugo Martins
-- Pedro Dias Marques  github.com/p-marques
+- Pedro Dias Marques  [github.com/p-marques](https://github.com/p-marques "GitHub profile")
