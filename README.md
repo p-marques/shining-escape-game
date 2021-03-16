@@ -8,7 +8,7 @@
 
 ## Authors
 
-- Diana Nóia  [github.com/DianaNoia](https://github.com/DianaNoia "GitHub profile")
-- Bruno Alves
+- Diana Nóia  [github.com/DianaNoia](https://github.com/DianaNoia "Diana's GitHub profile")
+- Bruno Alves  [github.com/b-alves-wsp](https://github.com/b-alves-wsp "Bruno's GitHub profile")
 - Hugo Martins
-- Pedro Dias Marques  [github.com/p-marques](https://github.com/p-marques "GitHub profile")
+- Pedro Dias Marques  [github.com/p-marques](https://github.com/p-marques "Pedro's GitHub profile")
