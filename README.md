@@ -10,5 +10,5 @@
 
 - Diana Nóia  [github.com/DianaNoia](https://github.com/DianaNoia "Diana's GitHub profile")
 - Bruno Alves  [github.com/b-alves-wsp](https://github.com/b-alves-wsp "Bruno's GitHub profile")
-- Hugo Martins
+- Hugo Martins [github.com/hugomrmartinsa210701372](https://github.com/hugomrmartinsa210701372 "Hugo's Github profile")
 - Pedro Dias Marques  [github.com/p-marques](https://github.com/p-marques "Pedro's GitHub profile")
