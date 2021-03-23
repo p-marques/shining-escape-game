@@ -20,8 +20,12 @@ public class StateMachine<T> where T: IState
         StateTransition transition = GetTransition();
 
         if (transition != null)
-            SetState(transition.Destination);
+        {
+            transition.Action?.Invoke();
 
+            SetState(transition.Destination);
+        }
+        
         CurrentState?.Tick();
     }
 
@@ -39,7 +43,8 @@ public class StateMachine<T> where T: IState
         CurrentState.OnEnter();
     }
 
-    public void AddTransiction(IState origin, IState destination, Func<bool> condition)
+    public void AddTransition(IState origin, IState destination, 
+        Func<bool> condition, Action action = null)
     {
         Type originType = origin.GetType();
         bool isListed = _transitions
@@ -51,7 +56,7 @@ public class StateMachine<T> where T: IState
             _transitions[originType] = stateTransitions;
         }
 
-        stateTransitions.Add(new StateTransition(destination, condition));
+        stateTransitions.Add(new StateTransition(destination, condition, action));
     }
 
     private StateTransition GetTransition()
