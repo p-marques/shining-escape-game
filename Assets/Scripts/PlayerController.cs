@@ -15,11 +15,11 @@ public class PlayerController : MonoBehaviour, ICharacter
     [SerializeField] private float _onAirMovementDamper = 0.6f;
 
     [Header("Movement Actions")]
-    [SerializeField] private Move2DActionsSO move2DActions;
+    [SerializeField] private Move2DActionsSO _move2DActions;
 
     [Space]
     [Header("Input")]
-    [SerializeField] private InputReader _inputReader;
+    [SerializeField] private InputReaderSO _inputReader;
 
     [Header("Ground Check")]
     [SerializeField] private float _groundCheckRadius = 1.0f;
@@ -92,22 +92,22 @@ public class PlayerController : MonoBehaviour, ICharacter
 
     private void OnEnable()
     {
-        _inputReader.moveEvent += OnMove;
-        _inputReader.jumpEvent += OnJumpPressed;
-        _inputReader.startedRunningEvent += OnStartedRunning;
-        _inputReader.stoppedRunningEvent += OnStoppedRunning;
-        _inputReader.startedCrouchEvent += OnStartedCrouch;
-        _inputReader.stoppedCrouchEvent += OnStoppedCrouch;
+        _inputReader.MoveEvent += OnMove;
+        _inputReader.JumpEvent += OnJumpPressed;
+        _inputReader.StartedRunningEvent += OnStartedRunning;
+        _inputReader.StoppedRunningEvent += OnStoppedRunning;
+        _inputReader.StartedCrouchEvent += OnStartedCrouch;
+        _inputReader.StoppedCrouchEvent += OnStoppedCrouch;
     }
 
     private void OnDisable()
     {
-        _inputReader.moveEvent -= OnMove;
-        _inputReader.jumpEvent -= OnJumpPressed;
-        _inputReader.startedRunningEvent -= OnStartedRunning;
-        _inputReader.stoppedRunningEvent -= OnStoppedRunning;
-        _inputReader.startedCrouchEvent -= OnStartedCrouch;
-        _inputReader.stoppedCrouchEvent -= OnStoppedCrouch;
+        _inputReader.MoveEvent -= OnMove;
+        _inputReader.JumpEvent -= OnJumpPressed;
+        _inputReader.StartedRunningEvent -= OnStartedRunning;
+        _inputReader.StoppedRunningEvent -= OnStoppedRunning;
+        _inputReader.StartedCrouchEvent -= OnStartedCrouch;
+        _inputReader.StoppedCrouchEvent -= OnStoppedCrouch;
     }
 
     private void OnMove(Vector2 movement)
@@ -170,12 +170,12 @@ public class PlayerController : MonoBehaviour, ICharacter
         else if (IsCrouched)
             moveSpeed *= _crouchSpeedMultiplier;
 
-        move2DActions.Move(this, horizontalAxis, moveSpeed, 
+        _move2DActions.Move(this, horizontalAxis, moveSpeed, 
             _drag, useDampener ? _onAirMovementDamper : 1f);
     }
 
     public void Jump()
     {
-        move2DActions.Jump(this, _jumpSpeed);
+        _move2DActions.Jump(this, _jumpSpeed);
     }
 }

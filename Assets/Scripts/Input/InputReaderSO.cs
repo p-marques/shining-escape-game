@@ -2,19 +2,19 @@
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
-public class InputReader : ScriptableObject
+[CreateAssetMenu(fileName = "InputReaderSO", menuName = "Game/Input/Input Reader")]
+public class InputReaderSO : ScriptableObject
 {
     [SerializeField] private InputActionAsset _playerActions;
 
     private InputActionMap _gameplayActionMap;
 
-    public event UnityAction<Vector2> moveEvent = delegate { };
-    public event UnityAction jumpEvent = delegate { };
-    public event UnityAction startedRunningEvent = delegate { };
-    public event UnityAction stoppedRunningEvent = delegate { };
-    public event UnityAction startedCrouchEvent = delegate { };
-    public event UnityAction stoppedCrouchEvent = delegate { };
+    public event UnityAction<Vector2> MoveEvent = delegate { };
+    public event UnityAction JumpEvent = delegate { };
+    public event UnityAction StartedRunningEvent = delegate { };
+    public event UnityAction StoppedRunningEvent = delegate { };
+    public event UnityAction StartedCrouchEvent = delegate { };
+    public event UnityAction StoppedCrouchEvent = delegate { };
 
     private void OnEnable()
     {
@@ -33,23 +33,23 @@ public class InputReader : ScriptableObject
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveEvent.Invoke(context.ReadValue<Vector2>());
+        MoveEvent.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnJumpPressed(InputAction.CallbackContext context)
     {
-        jumpEvent.Invoke();
+        JumpEvent.Invoke();
     }
 
     public void OnSprint(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            startedRunningEvent.Invoke();
+            StartedRunningEvent.Invoke();
         }
         else if (context.canceled)
         {
-            stoppedRunningEvent.Invoke();
+            StoppedRunningEvent.Invoke();
         }
     }
 
@@ -57,11 +57,11 @@ public class InputReader : ScriptableObject
     {
         if (context.performed)
         {
-            startedCrouchEvent.Invoke();
+            StartedCrouchEvent.Invoke();
         }
         else if (context.canceled)
         {
-            stoppedCrouchEvent.Invoke();
+            StoppedCrouchEvent.Invoke();
         }
     }
 
