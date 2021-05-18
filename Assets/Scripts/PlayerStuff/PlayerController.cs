@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour, ICharacter
         IsCrouched = true;
 
         Animator.SetBool("IsCrouched", true);
+
     }
 
     private void OnStoppedCrouch()
@@ -178,4 +179,5 @@ public class PlayerController : MonoBehaviour, ICharacter
     {
         move2DActions.Jump(this, _jumpSpeed);
     }
+
 }
