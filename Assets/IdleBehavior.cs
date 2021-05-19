@@ -7,7 +7,8 @@ public class IdleBehavior : StateMachineBehaviour
 
     //Timer stuff
     private float waitTime;
-    private Transform target; 
+    private Transform target;
+    deathZone checkDeath;
     [SerializeField] private float startWaitTime;
 
 
@@ -15,30 +16,23 @@ public class IdleBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        
-
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        if (waitTime <= 0)
+        while(animator.GetBool("isChasing") == false)
         {
-            waitTime = startWaitTime;
+            if (waitTime <= 0)
+            {
+                waitTime = startWaitTime;
 
-            animator.SetBool("isPatrolling", true);
-            animator.SetBool("isIdle", false);
-            waitTime = startWaitTime;
+                animator.SetBool("isPatrolling", true);
+                animator.SetBool("isIdle", false);
+                waitTime = startWaitTime;
+            }
+            else
+                waitTime -= Time.deltaTime;
         }
-        else
-            waitTime -= Time.deltaTime;
-
-    }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
     }
 }

@@ -8,6 +8,7 @@ public class PatrolBehavior : StateMachineBehaviour
     [SerializeField] public Transform[] moveSpots;
     [SerializeField] private float speed;
     [SerializeField] private float distance;
+    deathZone dead;
     private int randSpot;
 
 
@@ -25,11 +26,11 @@ public class PatrolBehavior : StateMachineBehaviour
     {
         animator.transform.position = Vector2.MoveTowards(animator.transform.position, moveSpots[randSpot].position, speed * Time.deltaTime);
 
-        if (Vector2.Distance(animator.transform.position, moveSpots[randSpot].position) < distance) 
+        if (Vector2.Distance(animator.transform.position, moveSpots[randSpot].position) < distance && dead.isDead == false) 
         {
             randSpot = Random.Range(0, moveSpots.Length);
-            animator.SetBool("isPatrolling", false);
-            animator.SetBool("isIdle", true);
+            animator.SetBool("isPatrolling", true);
+            animator.SetBool("isIdle", false);
         } 
 
 

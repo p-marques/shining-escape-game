@@ -7,6 +7,7 @@ public class DetectPlayer : MonoBehaviour
     [SerializeField] private float maxRange;
 
     [SerializeField] private Animator anim;
+    deathZone dead;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,7 @@ public class DetectPlayer : MonoBehaviour
         //check if found player
         if(hitInfo.collider != null)
         {
-            if (hitInfo.collider.CompareTag("Player")) 
+            if (hitInfo.collider.CompareTag("Player") && dead.isDead == false) 
             {
                 Debug.Log("found you");
                 anim.SetBool("isChasing", true);

@@ -5,7 +5,9 @@ using UnityEngine;
 public class deathZone : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    [SerializeField] private Animator anim;
+
+    public bool isDead = false;
+    [SerializeField] private GameObject retryScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +17,11 @@ public class deathZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && isDead == false)
         {
-            anim.SetBool("isDead", true);
             Debug.Log("dead");
+            retryScreen.SetActive(true);
+            isDead = true;
         }
             
     }

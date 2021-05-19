@@ -54,8 +54,9 @@ MonoBehaviour:
   - {fileID: 1232246262073749362, guid: 39b079ccfdd1d35459af12d63def04fa, type: 3}
   - {fileID: 3341769967723678566, guid: 11aab4305dd3aad468d73eccddcd2495, type: 3}
   - {fileID: 7115999792707269598, guid: a02af2015bc36a14d87f0c7b842353cb, type: 3}
-  speed: 40
-  distance: 50
+  - {fileID: 7160767337944659657, guid: d050472b5e5e94b4ab24ce5b4558eba8, type: 3}
+  speed: 30
+  distance: 2
 --- !u!114 &-3390389562731228658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,19 +167,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isPatrolling
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isIdle
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
