@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
+
+    private void Start()
+    {
+        Cursor.visible = true;
+    }
     public void Play()
     {
         SceneManager.LoadScene("Level1");
