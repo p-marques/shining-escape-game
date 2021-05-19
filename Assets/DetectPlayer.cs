@@ -7,9 +7,6 @@ public class DetectPlayer : MonoBehaviour
     [SerializeField] private float maxRange;
 
     [SerializeField] private Animator anim;
-
-    public CheckHidden check;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +25,9 @@ public class DetectPlayer : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Player")) 
             {
-                    anim.SetBool("isChasing", true);
-                    Debug.DrawLine(transform.position, hitInfo.point, Color.red);
+                anim.SetBool("isChasing", true);
+                Debug.DrawLine(transform.position, hitInfo.point, Color.red);
+
             }
             
         }
