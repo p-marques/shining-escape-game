@@ -7,12 +7,14 @@ public class IdleBehavior : StateMachineBehaviour
 
     //Timer stuff
     private float waitTime;
+    private Transform target; 
     [SerializeField] private float startWaitTime;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         
 
     }

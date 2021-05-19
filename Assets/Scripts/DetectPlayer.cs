@@ -10,7 +10,7 @@ public class DetectPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Physics2D.queriesStartInColliders = false;
+        //Physics2D.queriesStartInColliders = false;
         
     }
 
@@ -25,6 +25,7 @@ public class DetectPlayer : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Player")) 
             {
+                Debug.Log("found you");
                 anim.SetBool("isChasing", true);
                 Debug.DrawLine(transform.position, hitInfo.point, Color.red);
 
