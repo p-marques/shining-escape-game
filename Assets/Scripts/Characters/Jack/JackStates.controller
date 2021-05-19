@@ -37,7 +37,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da22b6e4b9c4bff44aff5a8866acb85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 30
 --- !u!114 &-5421825694372278551
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,7 +55,7 @@ MonoBehaviour:
   - {fileID: 3341769967723678566, guid: 11aab4305dd3aad468d73eccddcd2495, type: 3}
   - {fileID: 7115999792707269598, guid: a02af2015bc36a14d87f0c7b842353cb, type: 3}
   - {fileID: 7160767337944659657, guid: d050472b5e5e94b4ab24ce5b4558eba8, type: 3}
-  speed: 30
+  speed: 10
   distance: 2
 --- !u!114 &-3390389562731228658
 MonoBehaviour:
