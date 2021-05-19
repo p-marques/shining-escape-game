@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//public class OpenDoor : MonoBehaviour
-//{
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-        
-//    }
+public class OpenDoor : MonoBehaviour
+{
+    Door door;
+    // Start is called before the first frame update
+    void Start()
+    {
 
-//    private void OnTriggerEnter2D(Collider2D collision)
-//    {
-//        if(collision.CompareTag("Player"))
-//        {
-//            doorOpen = true;
-//        }
-//    }
-//}
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            door.doorOpen = true;
+        }
+    }
+}
