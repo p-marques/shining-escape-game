@@ -38,7 +38,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   speed: 60
+=======
+  speed: 30
+>>>>>>> parent of dce448a (Merge branch 'hugo' into main)
 =======
   speed: 30
 >>>>>>> parent of dce448a (Merge branch 'hugo' into main)
@@ -184,7 +188,11 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Controller: {fileID: 0}
+=======
+    m_Controller: {fileID: 9100000}
+>>>>>>> parent of dce448a (Merge branch 'hugo' into main)
 =======
     m_Controller: {fileID: 9100000}
 >>>>>>> parent of dce448a (Merge branch 'hugo' into main)
