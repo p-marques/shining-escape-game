@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour, ICharacter
 
     private StateMachine<IPlayerState> _stateMachine;
 
+    public Animator player;
+
     private Vector2[] GroundColliderPoints
     {
         get
@@ -112,7 +114,9 @@ public class PlayerController : MonoBehaviour, ICharacter
 
     private void OnMove(Vector2 movement)
     {
+        player.SetBool("isWalking", true);
         PreviousMovementInput = movement;
+        
     }
 
     private void OnJumpPressed() => JumpInput = true;

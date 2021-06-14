@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
-    Door door;
+    public Door door;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,7 @@ public class OpenDoor : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("Door open yey");
             door.doorOpen = true;
         }
     }

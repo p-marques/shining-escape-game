@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class FoV : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator jack;
+
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        
+        if (col.gameObject.CompareTag("Player"))
+        {
+            jack.SetBool("isChasing", true);
+        }
     }
-
-    
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        
-    }
-
-    
 }
