@@ -5,7 +5,7 @@ using UnityEngine;
 public class moveToDoor : MonoBehaviour
 {
     // Start is called before the first frame update
-    private GameObject character;
+    [SerializeField] private GameObject character;
     [SerializeField] private Transform moveTo;
 
     private void OnTriggerEnter2D(Collider2D collision)
