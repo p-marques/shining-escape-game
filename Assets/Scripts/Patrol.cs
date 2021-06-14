@@ -7,16 +7,7 @@ public class Patrol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        waitTime = startWaitTime;
-        randSpot = Random.Range(0, spots.Length);
-=======
         
->>>>>>> parent of dce448a (Merge branch 'hugo' into main)
-=======
-        
->>>>>>> parent of dce448a (Merge branch 'hugo' into main)
     }
 
     // Update is called once per frame
