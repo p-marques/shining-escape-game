@@ -10,7 +10,6 @@ public class InputReaderSO : ScriptableObject
     private InputActionMap _gameplayActionMap;
 
     public event UnityAction<Vector2> MoveEvent = delegate { };
-    public event UnityAction JumpEvent = delegate { };
     public event UnityAction StartedRunningEvent = delegate { };
     public event UnityAction StoppedRunningEvent = delegate { };
     public event UnityAction StartedCrouchEvent = delegate { };
@@ -34,11 +33,6 @@ public class InputReaderSO : ScriptableObject
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveEvent.Invoke(context.ReadValue<Vector2>());
-    }
-
-    public void OnJumpPressed(InputAction.CallbackContext context)
-    {
-        JumpEvent.Invoke();
     }
 
     public void OnSprint(InputAction.CallbackContext context)

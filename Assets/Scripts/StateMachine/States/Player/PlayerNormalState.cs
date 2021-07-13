@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerNormalState : IPlayerState
 {
-    private PlayerController _playerController;
+    private readonly PlayerController _playerController;
 
     public PlayerNormalState(PlayerController playerController)
     {
@@ -24,26 +24,10 @@ public class PlayerNormalState : IPlayerState
     public void PhysicsTick()
     {
         _playerController.Move(_playerController.PreviousMovementInput.x);
-
-        if (_playerController.JumpInput)
-            _playerController.Jump();
     }
 
     public void Tick()
     {
-        float xVelocity = _playerController.Rigidbody.velocity.x;
-
-        if (xVelocity < -0.5f)
-        {
-            if (_playerController.transform.right.x > 0)
-                _playerController.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-        else if (xVelocity > 0.5f)
-        {
-            if (_playerController.transform.right.x < 0)
-                _playerController.transform.rotation = Quaternion.identity;
-        }
-
-        _playerController.Animator.SetFloat("AbsVelX", Mathf.Abs(xVelocity));
+        _playerController.Animator.SetFloat("AbsVelX", Mathf.Abs(_playerController.Rigidbody.velocity.x));
     }
 }
