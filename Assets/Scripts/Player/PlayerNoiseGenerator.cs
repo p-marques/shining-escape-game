@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerNoiseGenerator : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerNoiseGenerator : MonoBehaviour
     private PlayerController _player;
     private CircleCollider2D _circleCollider2D;
     private float _currentNoiseRadius;
+
+    public PlayerController PlayerController => _player;
 
     private void Awake()
     {

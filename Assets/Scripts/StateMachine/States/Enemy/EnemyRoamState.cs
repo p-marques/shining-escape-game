@@ -50,8 +50,6 @@ public class EnemyRoamState : IEnemyState
         {
             _currentWaitTimer = _pointsManager.PointChangeWaitTime;
 
-            Debug.Log(_currentWaitTimer);
-
             if (_currentPointIndex + 1 < _pointsManager.Points.Length)
             {
                 _currentPointIndex++;
@@ -65,6 +63,6 @@ public class EnemyRoamState : IEnemyState
 
     public void Tick()
     {
-        // Set animator info
+        
     }
 }

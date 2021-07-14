@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 20149557}
   - component: {fileID: 20149559}
   - component: {fileID: 20149558}
+  - component: {fileID: 20149560}
   m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
@@ -102,6 +103,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &20149560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20149556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d46d18b1a6e8184bbd5d03e468d7552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1606245031
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +233,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 50
+  m_Radius: 30
 --- !u!114 &2019935609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,11 +246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e462edb006a55364d804f1f2b262b084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _standingIdle: 50
-  _standingWalking: 250
-  _standingRunning: 450
-  _crouchedIdle: 30
-  _crouchedWalking: 80
+  _standingIdle: 20
+  _standingWalking: 50
+  _standingRunning: 100
+  _crouchedIdle: 10
+  _crouchedWalking: 30
   _onPlayerStanceChange: {fileID: 0}
 --- !u!1 &1814296825555210869
 GameObject:
@@ -409,8 +422,3 @@ MonoBehaviour:
   _drag: 0.9
   _move2DActions: {fileID: 11400000, guid: 4fb8f56a7c1be474d9c8b1c3ba93acd3, type: 2}
   _inputReader: {fileID: 11400000, guid: 14439cd821f393140a452f710da85d74, type: 2}
-  _groundCheckRadius: 0.5
-  _groundCheckSidesDistance: 5
-  _groundLayers:
-    serializedVersion: 2
-    m_Bits: 256
