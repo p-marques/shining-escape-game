@@ -1,13 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerController : ShiningCharacterControllerWithStates<IPlayerState>
 {
-    [Space]
     [Header("Input")]
     [SerializeField] private InputReaderSO _inputReader;
 
+    [Header("Events")]
+    [SerializeField] private VoidEventChannelSO _toggleVisibilityEvent;
+
+    private SpriteRenderer _spriteRenderer;
+    private Light2D _playerLight;
+    
     private bool IsMoving => Mathf.Abs(Rigidbody.velocity.x) > 0.1f;
     public Vector2 PreviousMovementInput { get; private set; }
+    public bool IsDetectable { get; private set; }
+    public bool CanMove { get; private set; }
     
     public PlayerStance CurrentStance 
     {
@@ -41,12 +49,20 @@ public class PlayerController : ShiningCharacterControllerWithStates<IPlayerStat
     protected override void Awake()
     {
         base.Awake();
+       
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _playerLight = GetComponentInChildren<Light2D>();
+
+        if (!_spriteRenderer || !_playerLight)
+            Debug.LogError("PlayerController: one ore more components for visibility toggle where not found!");
 
         _stateMachine = new StateMachine<IPlayerState>();
 
         PlayerNormalState playerNormalState = new PlayerNormalState(this);
 
         _stateMachine.SetState(playerNormalState);
+
+        CanMove = true;
     }
 
     private void OnEnable()
@@ -56,6 +72,9 @@ public class PlayerController : ShiningCharacterControllerWithStates<IPlayerStat
         _inputReader.StoppedRunningEvent += OnStoppedRunning;
         _inputReader.StartedCrouchEvent += OnStartedCrouch;
         _inputReader.StoppedCrouchEvent += OnStoppedCrouch;
+
+        if (_toggleVisibilityEvent)
+            _toggleVisibilityEvent.OnEventRaised += ToggleVisibility;
     }
 
     private void OnDisable()
@@ -65,11 +84,15 @@ public class PlayerController : ShiningCharacterControllerWithStates<IPlayerStat
         _inputReader.StoppedRunningEvent -= OnStoppedRunning;
         _inputReader.StartedCrouchEvent -= OnStartedCrouch;
         _inputReader.StoppedCrouchEvent -= OnStoppedCrouch;
+
+        if (_toggleVisibilityEvent)
+            _toggleVisibilityEvent.OnEventRaised -= ToggleVisibility;
     }
 
     private void OnMove(Vector2 movement)
     {
-        PreviousMovementInput = movement;
+        if (CanMove)
+            PreviousMovementInput = movement;
     }
 
     private void OnStartedRunning()
@@ -102,5 +125,13 @@ public class PlayerController : ShiningCharacterControllerWithStates<IPlayerStat
         IsCrouched = false;
 
         Animator.SetBool("IsCrouched", false);
+    }
+
+    private void ToggleVisibility()
+    {
+        CanMove = !CanMove;
+        IsDetectable = !IsDetectable;
+        _spriteRenderer.enabled = !_spriteRenderer.enabled;
+        _playerLight.enabled = !_playerLight.enabled;
     }
 }

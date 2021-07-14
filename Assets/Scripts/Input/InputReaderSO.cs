@@ -14,6 +14,7 @@ public class InputReaderSO : ScriptableObject
     public event UnityAction StoppedRunningEvent = delegate { };
     public event UnityAction StartedCrouchEvent = delegate { };
     public event UnityAction StoppedCrouchEvent = delegate { };
+    public event UnityAction OnInteractEvent = delegate { };
 
     private void OnEnable()
     {
@@ -56,6 +57,14 @@ public class InputReaderSO : ScriptableObject
         else if (context.canceled)
         {
             StoppedCrouchEvent.Invoke();
+        }
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            OnInteractEvent.Invoke();
         }
     }
 

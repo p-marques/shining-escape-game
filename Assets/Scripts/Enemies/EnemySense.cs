@@ -13,13 +13,20 @@ public abstract class EnemySense : MonoBehaviour
         get => _detectedPlayer;
         protected set
         {
-            if (value == null && _detectedPlayer != null)
+            if (value != null)
+            {
+                if (value.IsDetectable)
+                {
+                    TimeElapsedSinceLastDetection = 0f;
+                }
+                else
+                {
+                    value = null;
+                }
+            }
+            else if (_detectedPlayer != null)
             {
                 LastKnownPosition = _detectedPlayer.transform.position;
-            }
-            else
-            {
-                TimeElapsedSinceLastDetection = 0f;
             }
 
             _detectedPlayer = value;

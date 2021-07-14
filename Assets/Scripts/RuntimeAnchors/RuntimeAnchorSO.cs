@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class RuntimeAnchorSO<T> : ScriptableObject where T : class
 {
-	public bool IsSet { get; private set; }
-
 	private T _value;
+
+	public bool IsSet { get; private set; }
 
 	public T Value
 	{

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 3147575005369447419, guid: abd5662e435d44045ad1682f8a2dcf76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -246,11 +246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e462edb006a55364d804f1f2b262b084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _standingIdle: 20
-  _standingWalking: 50
-  _standingRunning: 100
-  _crouchedIdle: 10
-  _crouchedWalking: 30
+  _standingIdle: 30
+  _standingWalking: 100
+  _standingRunning: 200
+  _crouchedIdle: 15
+  _crouchedWalking: 50
   _onPlayerStanceChange: {fileID: 0}
 --- !u!1 &1814296825555210869
 GameObject:
@@ -265,6 +265,8 @@ GameObject:
   - component: {fileID: 1814296825555210868}
   - component: {fileID: 1814296825555211144}
   - component: {fileID: 1814296825555211147}
+  - component: {fileID: 1471780671}
+  - component: {fileID: 3545592177306082401}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -399,6 +401,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a1faeef7-aa73-4231-9858-f86d9d478573
     m_ActionName: GameplayActionMap/Crouch[/Keyboard/leftCtrl,/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 14439cd821f393140a452f710da85d74, type: 2}
+        m_TargetAssemblyTypeName: InputReaderSO, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c93d845b-2cb9-44ff-be92-40536bcd01b8
+    m_ActionName: GameplayActionMap/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: GameplayActionMap
@@ -422,3 +440,31 @@ MonoBehaviour:
   _drag: 0.9
   _move2DActions: {fileID: 11400000, guid: 4fb8f56a7c1be474d9c8b1c3ba93acd3, type: 2}
   _inputReader: {fileID: 11400000, guid: 14439cd821f393140a452f710da85d74, type: 2}
+--- !u!114 &1471780671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814296825555210869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4167db2cde7d02f40af2bd019d27a1c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 14439cd821f393140a452f710da85d74, type: 2}
+  _currentHitInteractionAnchor: {fileID: 11400000, guid: 5645872a43af7b54e8f3dba3851d6e9f, type: 2}
+--- !u!114 &3545592177306082401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814296825555210869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c22a4012a3f93344be475c6b60bce02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventory: {fileID: 11400000, guid: 2cd4ae7a77682c646bb24baa1f9e5b84, type: 2}
+  _addItemEventChannel: {fileID: 11400000, guid: 0bab3bd79d9a5f44b86fae4a7e74ea53, type: 2}
