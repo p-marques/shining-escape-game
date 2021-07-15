@@ -6,21 +6,24 @@ public class CameraController : MonoBehaviour
     [Range(0.01f, 0.2f)]
     [SerializeField] private float _deltaFactor = 0.1f;
 
-    private Transform _target;
+    [SerializeField] private TransformAnchorSO _playerTransformAnchor;
 
     private void Awake()
     {
-        _target = FindObjectOfType<PlayerController>().transform;
-
-        if (!_target) Debug.LogError("No player!");
+        if (!_playerTransformAnchor || !_playerTransformAnchor.IsSet)
+            Debug.LogError("CameraController has no target.");
     }
 
     private void FixedUpdate()
     {
-        if (!_target) return;
+        float valueX, valueY;
 
-        Vector3 newPos = new Vector3(_target.position.x + _offset.x * _target.right.x,
-            _target.position.y + _offset.y, transform.position.z);
+        if (!_playerTransformAnchor || !_playerTransformAnchor.IsSet) return;
+
+        valueX = _playerTransformAnchor.Value.position.x + _offset.x * _playerTransformAnchor.Value.right.x;
+        valueY = _playerTransformAnchor.Value.position.y + _offset.y;
+
+        Vector3 newPos = new Vector3(valueX, valueY, transform.position.z);
 
         Vector3 delta = newPos - transform.position;
 

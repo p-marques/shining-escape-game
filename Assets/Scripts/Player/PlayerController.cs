@@ -6,6 +6,9 @@ public class PlayerController : ShiningCharacterControllerWithStates<IPlayerStat
     [Header("Input")]
     [SerializeField] private InputReaderSO _inputReader;
 
+    [Header("Runtime Anchors")]
+    [SerializeField] private TransformAnchorSO _playerTransformAnchor;
+
     [Header("Events")]
     [SerializeField] private VoidEventChannelSO _toggleVisibilityEvent;
 
@@ -16,6 +19,7 @@ public class PlayerController : ShiningCharacterControllerWithStates<IPlayerStat
     public Vector2 PreviousMovementInput { get; private set; }
     public bool IsDetectable { get; private set; }
     public bool CanMove { get; private set; }
+    public bool IsBeingChased { get; set; }
     
     public PlayerStance CurrentStance 
     {
@@ -63,6 +67,9 @@ public class PlayerController : ShiningCharacterControllerWithStates<IPlayerStat
         _stateMachine.SetState(playerNormalState);
 
         CanMove = true;
+        IsDetectable = true;
+
+        _playerTransformAnchor.Value = transform;
     }
 
     private void OnEnable()
@@ -133,5 +140,10 @@ public class PlayerController : ShiningCharacterControllerWithStates<IPlayerStat
         IsDetectable = !IsDetectable;
         _spriteRenderer.enabled = !_spriteRenderer.enabled;
         _playerLight.enabled = !_playerLight.enabled;
+    }
+
+    private void OnDestroy()
+    {
+        _playerTransformAnchor.Value = null;
     }
 }

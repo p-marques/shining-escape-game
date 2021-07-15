@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyChaseState : IEnemyState
 {
-    private readonly Enemy _enemy;
+    private readonly ShiningCharacterController _enemy;
 
     public PlayerController Target { get; set; }
 
-    public EnemyChaseState(Enemy enemy)
+    public EnemyChaseState(ShiningCharacterController enemy)
     {
         _enemy = enemy;
     }
@@ -17,10 +17,13 @@ public class EnemyChaseState : IEnemyState
     {
         if (!Target)
             Debug.LogError("EnemyChaseState has no target");
+        else
+            Target.IsBeingChased = true;
     }
 
     public void OnExit()
     {
+        Target.IsBeingChased = false;
         Target = null;
     }
 

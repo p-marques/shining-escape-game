@@ -9,6 +9,7 @@ public class PlayerInventoryManager : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private ItemEventChannelSO _addItemEventChannel;
+    [SerializeField] private VoidEventChannelSO _onContentsUpdated;
 
     private void OnEnable()
     {
@@ -30,5 +31,8 @@ public class PlayerInventoryManager : MonoBehaviour
         }
 
         _inventory.AddItem(item);
+
+        if (_onContentsUpdated)
+            _onContentsUpdated.RaiseEvent();
     }
 }

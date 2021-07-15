@@ -9,7 +9,7 @@ public class EnemyVisualDetector : EnemySense
 
     [Header("Ray Settings")]
     [SerializeField] private LayerMask _layerMask;
-    [Range(1.0f, 200.0f)]
+    [Range(1.0f, 1500.0f)]
     [SerializeField] private float _detectionRayDistance = 100f;
 
     [Header("Detection Settings")]

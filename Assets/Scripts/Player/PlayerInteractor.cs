@@ -10,6 +10,16 @@ public class PlayerInteractor : MonoBehaviour
     [Header("Anchor")]
     [SerializeField] private IInteractableAnchorSO _currentHitInteractionAnchor;
 
+    private PlayerController _playerController;
+
+    private void Awake()
+    {
+        _playerController = GetComponent<PlayerController>();
+
+        if (!_playerController)
+            Debug.LogError("PlayerInteractor couldn't find PlayerController");
+    }
+
     private void OnEnable()
     {
         _inputReader.OnInteractEvent += Interact;
@@ -24,7 +34,7 @@ public class PlayerInteractor : MonoBehaviour
     {
         IInteractable interactable = collision.GetComponent<IInteractable>();
 
-        if (interactable != null)
+        if (interactable != null && interactable.CanPlayerInteract(_playerController))
             _currentHitInteractionAnchor.Value = interactable;
     }
 

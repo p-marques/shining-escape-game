@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 100
   m_Sprite: {fileID: 3147575005369447419, guid: abd5662e435d44045ad1682f8a2dcf76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.7
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.8
+  m_Intensity: 0.1
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -440,6 +440,8 @@ MonoBehaviour:
   _drag: 0.9
   _move2DActions: {fileID: 11400000, guid: 4fb8f56a7c1be474d9c8b1c3ba93acd3, type: 2}
   _inputReader: {fileID: 11400000, guid: 14439cd821f393140a452f710da85d74, type: 2}
+  _playerTransformAnchor: {fileID: 11400000, guid: 17362b9bb5ade384d85db8ab8f7adc01, type: 2}
+  _toggleVisibilityEvent: {fileID: 11400000, guid: 880c86b7489fc984193938433b7580fa, type: 2}
 --- !u!114 &1471780671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,3 +470,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventory: {fileID: 11400000, guid: 2cd4ae7a77682c646bb24baa1f9e5b84, type: 2}
   _addItemEventChannel: {fileID: 11400000, guid: 0bab3bd79d9a5f44b86fae4a7e74ea53, type: 2}
+  _onContentsUpdated: {fileID: 11400000, guid: e8cfed7bb7a88704e9e35a2031bf8d0d, type: 2}

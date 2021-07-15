@@ -9,19 +9,19 @@ public class UIInteractionPanel : MonoBehaviour
 
     private void Update()
     {
-        if (_currentAvailableInteractionAnchor.IsSet && !_wrapper.activeInHierarchy)
+        if (_currentAvailableInteractionAnchor.IsSet)
         {
-            _wrapper.SetActive(true);
+            if (!_wrapper.activeInHierarchy || 
+                _interactionTextObject.text != _currentAvailableInteractionAnchor.Value.CallToAction)
+            {
+                _wrapper.SetActive(true);
 
-            UpdateText();
+                UpdateText();
+            }
         }
-        else if (!_currentAvailableInteractionAnchor.IsSet)
+        else if (_wrapper.activeInHierarchy)
         {
             _wrapper.SetActive(false);
-        }
-        else if (_interactionTextObject.text != _currentAvailableInteractionAnchor.Value.CallToAction)
-        {
-            UpdateText();
         }
     }
 

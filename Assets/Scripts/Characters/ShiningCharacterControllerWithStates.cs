@@ -6,7 +6,7 @@ public abstract class ShiningCharacterControllerWithStates<T> : ShiningCharacter
 {
     protected StateMachine<T> _stateMachine;
 
-    private void FixedUpdate() => _stateMachine.PhysicsTick();
+    protected virtual void FixedUpdate() => _stateMachine.PhysicsTick();
 
-    private void Update() => _stateMachine.Tick();
+    protected virtual void Update() => _stateMachine.Tick();
 }

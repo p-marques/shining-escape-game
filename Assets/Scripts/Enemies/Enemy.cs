@@ -69,18 +69,18 @@ public class Enemy : ShiningCharacterControllerWithStates<IEnemyState>
 
         // EnemyChaseState to X
         _stateMachine.AddTransition(chaseState, investigateState, 
-            () => !_visualDetector.PlayerFullyDetected,
+            () => !_visualDetector.PlayerFullyDetected && _visualDetector.LastKnownPosition.HasValue,
             () => OnEnterInvestigation(investigateState,
             _visualDetector.LastKnownPosition, LastKnownPositionMode.Visual));
+        _stateMachine.AddTransition(chaseState, roamState,
+            () => !_visualDetector.LastKnownPosition.HasValue && !_visualDetector.DetectedPlayer);
 
         _stateMachine.SetState(roamState);
     }
 
-    private void FixedUpdate() => _stateMachine.PhysicsTick();
-
-    private void Update()
+    protected override void Update()
     {
-        _stateMachine.Tick();
+        base.Update();
 
         Animator.SetFloat("AbsVelX", Mathf.Abs(Rigidbody.velocity.x));
     }
@@ -90,11 +90,19 @@ public class Enemy : ShiningCharacterControllerWithStates<IEnemyState>
         Vector3? lastKnownPosition, 
         LastKnownPositionMode mode)
     {
-        state.Target = lastKnownPosition.Value;
+        state.Target = lastKnownPosition;
 
         IsInvestigating = true;
 
-        if (_onEnemyInvestigatingLastKnownPosition)
+        if (_onEnemyInvestigatingLastKnownPosition && lastKnownPosition.HasValue)
             _onEnemyInvestigatingLastKnownPosition.RaiseEvent(new LastKnownPositionInfo(state.Target.Value, mode));
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        SideViewDoor door = collision.gameObject.GetComponent<SideViewDoor>();
+
+        if (door && !door.IsOpen)
+            door.Interact();
     }
 }

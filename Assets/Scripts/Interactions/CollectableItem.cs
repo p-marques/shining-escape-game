@@ -10,6 +10,11 @@ public class CollectableItem : MonoBehaviour, IInteractable
     
     public string CallToAction => _callToAction;
 
+    public bool CanPlayerInteract(PlayerController player)
+    {
+        return !player.IsBeingChased;
+    }
+
     public void Interact()
     {
         if (!_addItemEventChannel)
